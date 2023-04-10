@@ -1,0 +1,6 @@
+<Config>
+    <NumberOfProcess>15</NumberOfProcess>
+    <InputPrefix>/home/evgeny/dcs-labs/lab1(fork)/input</InputPrefix>
+    <OutputPrefix>/home/evgeny/dcs-labs/lab1(fork)/output</OutputPrefix> 
+    <MaxFileSize>1000</MaxFileSize>
+</Config>

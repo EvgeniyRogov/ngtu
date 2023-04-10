@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = 'utf-8'>
+	<script type="text/javascript">
+		function readServerString(url,msg,callback){
+			msg_json = JSON.stringify(msg);
+			let req = new XMLHttpRequest();
+			req.onreadystatechange = function(){
+				if(req.readyState === 4){
+					if(req.status === 200){
+						callback(undefined,req.responseText);
+					}
+					else{
+						callback(new Error(req.status));
+					}
+				}
+			};
+			req.open("POST",url,true);
+			req.setRequestHeader("Content-type","application/json");
+			req.send(msg_json);
+		}
+		
+			
+		function sql_table(){
+			var sql = document.getElementById('input').value; 
+			readServerString("/sql_table",sql,function(err,response){
+				if(!err){
+					var weapons = JSON.parse(response);
+					if(weapons === 1){
+						document.getElementById("call_res").innerHTML = "Incorrect Input!";
+					}
+					else{
+						var wp_html = "<table border='1'>\n" +
+							          " <caption>Weapons</caption>\n" +
+						   		      "  <tr> <th>ID</th> <th>Weapon</th> <th>Country</th> <th>Type</th> <th>Calibre</th> </tr>\n"; 
+						for(var i = 0; i < weapons.length; ++i){
+							wp_html += "<tr><td>" + weapons[i].ID + "</td>" +
+				  	    		       "<td>" + weapons[i].Weapon + "</td>" + 	
+			  	 			           "<td>" + weapons[i].Country + "</td>" + 
+		        	  		           "<td>" + weapons[i].Type + "</td>" + 
+		           				       "<td>" + weapons[i].Calibre + "</td></tr>\n";
+						}
+						document.getElementById("call_res").innerHTML = wp_html;
+					}
+				}
+				else document.getElementById("call_res").innerHTML =
+				"<span style = 'color: red'>" + err + "</span>";
+			});
+		}	
+		
+
+	</script>
+</head>
+<body>
+	<input type="text" id="input">
+    <input type="button" value= "Отфильтровать" onclick="sql_table()">
+	<p> 
+		<span id="call_res" style="font-style: italic;"></span>
+	</p>
+</body>
+</html>

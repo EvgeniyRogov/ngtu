@@ -1,0 +1,15 @@
+/lab1(fork)/input
+/lab1(fork)/output
+/lab1(fork)/lab1
+/lab1(fork)/wordcounter
+
+/lab2(pipe+poll)/lab2
+/lab2(pipe+poll)/report
+/lab2(pipe+poll)/tasks
+
+/lab3(shared_memory)/A
+/lab3(shared_memory)/B
+/lab3(shared_memory)/C
+/lab3(shared_memory)/D
+/lab3(shared_memory)/results
+/lab3(shared_memory)/fifo
