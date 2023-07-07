@@ -1,12 +1,12 @@
-function out_y = Conform( arg_x )
+function out_y = Conform(arg_x)
 
     if(arg_x < 0 || arg_x > 200)
         disp('Error');
         return
     end
-    
+
     load C:\Users\hp\desktop\Matlab\Ball\my_graphic;
-    
+
     if mod(arg_x,2) == 0
         i = 1;
         while 1,
@@ -27,9 +27,9 @@ function out_y = Conform( arg_x )
             x2 = ceil(arg_x);
             x1 = x2 - 2;
         end
-        
+
     end
-    
+
     i = 1;
 
     while 1,
@@ -39,12 +39,11 @@ function out_y = Conform( arg_x )
         end
         i = i + 1;
     end
-    
+
     y2 = y(i + 1);
-    
+
     k = (y1-y2)/(x1-x2);
     b = y2 - k*x2;
     out_y = k * arg_x + b;
-       
-end  
 
+end
